@@ -1,0 +1,647 @@
+[
+  {
+    "id": "lesson-01",
+    "moduleId": "basic-1",
+    "number": 1,
+    "title": "Verbs & Foods",
+    "theory": [
+      "I eat (Eu como) / You drink (Você bebe).",
+      "Negative: I do not eat (Eu não como).",
+      "Interrogative: Do you eat? (Você come?)"
+    ],
+    "vocabulary": [
+      { "en": "Meat", "pt": "Carne", "category": "food" },
+      { "en": "Fish", "pt": "Peixe", "category": "food" },
+      { "en": "Chicken", "pt": "Frango", "category": "food" },
+      { "en": "Coffee", "pt": "Café", "category": "drink" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-1-1",
+        "type": "translation",
+        "question": "Traduza: Eu bebo café",
+        "correctAnswer": "I drink coffee"
+      },
+      {
+        "id": "ex-1-2",
+        "type": "translation",
+        "question": "Traduza: Você come pão",
+        "correctAnswer": "You eat bread"
+      },
+      {
+        "id": "ex-1-3",
+        "type": "multiple_choice",
+        "question": "Qual a negativa de 'I eat apple'?",
+        "correctAnswer": "I do not eat apple",
+        "options": ["I no eat apple", "I do not eat apple", "I not eat apple"]
+      }
+    ]
+  },
+  {
+    "id": "lesson-02",
+    "moduleId": "basic-1",
+    "number": 2,
+    "title": "I Like & You Have",
+    "theory": [
+      "Verbs: To Like (Gostar) / To Have (Ter).",
+      "I like you (Eu gosto de você).",
+      "You have two brothers (Você tem dois irmãos).",
+      "Negative: I don't like (Eu não gosto)."
+    ],
+    "vocabulary": [
+      { "en": "Brother", "pt": "Irmão", "category": "family" },
+      { "en": "Sister", "pt": "Irmã", "category": "family" },
+      { "en": "Son", "pt": "Filho", "category": "family" },
+      { "en": "Daughter", "pt": "Filha", "category": "family" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-2-1",
+        "type": "translation",
+        "question": "Traduza: Eu tenho dois irmãos",
+        "correctAnswer": "I have two brothers"
+      },
+      {
+        "id": "ex-2-2",
+        "type": "translation",
+        "question": "Traduza: Eu não gosto de refrigerante",
+        "correctAnswer": "I don't like soda"
+      }
+    ]
+  },
+  {
+    "id": "lesson-03",
+    "moduleId": "basic-1",
+    "number": 3,
+    "title": "I Want & You Play",
+    "theory": [
+      "Verbs: To Want (Querer) / To Play (Jogar/Tocar).",
+      "I want chocolate (Eu quero chocolate).",
+      "You play soccer (Você joga futebol).",
+      "Structure: Do you want to play? (Você quer jogar?)."
+    ],
+    "vocabulary": [
+      { "en": "Soccer", "pt": "Futebol", "category": "sports" },
+      { "en": "Guitar", "pt": "Violão", "category": "instruments" },
+      { "en": "Piano", "pt": "Piano", "category": "instruments" },
+      { "en": "Today", "pt": "Hoje", "category": "time" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-3-1",
+        "type": "translation",
+        "question": "Traduza: Eu quero tocar piano",
+        "correctAnswer": "I want to play the piano"
+      },
+      {
+        "id": "ex-3-2",
+        "type": "translation",
+        "question": "Traduza: Você joga futebol?",
+        "correctAnswer": "Do you play soccer"
+      }
+    ]
+  },
+  {
+    "id": "lesson-04",
+    "moduleId": "basic-1",
+    "number": 4,
+    "title": "We Work & They Study",
+    "theory": [
+      "Pronouns: We (Nós) / They (Eles/Elas).",
+      "Verbs: To Work (Trabalhar) / To Study (Estudar).",
+      "We work in the morning (Nós trabalhamos de manhã).",
+      "They study English (Eles estudam inglês)."
+    ],
+    "vocabulary": [
+      { "en": "Morning", "pt": "Manhã", "category": "time" },
+      { "en": "Afternoon", "pt": "Tarde", "category": "time" },
+      { "en": "Night", "pt": "Noite", "category": "time" },
+      { "en": "Tomorrow", "pt": "Amanhã", "category": "time" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-4-1",
+        "type": "translation",
+        "question": "Traduza: Nós trabalhamos de manhã",
+        "correctAnswer": "We work in the morning"
+      },
+      {
+        "id": "ex-4-2",
+        "type": "translation",
+        "question": "Traduza: Eles estudam inglês",
+        "correctAnswer": "They study English"
+      }
+    ]
+  },
+  {
+    "id": "lesson-05",
+    "moduleId": "basic-1",
+    "number": 5,
+    "title": "We Read & They Write",
+    "theory": [
+      "Verbs: To Read (Ler) / To Write (Escrever).",
+      "We read books (Nós lemos livros).",
+      "They write letters (Eles escrevem cartas).",
+      "Interrogative: What do you read? (O que você lê?)."
+    ],
+    "vocabulary": [
+      { "en": "Book", "pt": "Livro", "category": "objects" },
+      { "en": "Letter", "pt": "Carta", "category": "objects" },
+      { "en": "What", "pt": "O que", "category": "question" },
+      { "en": "Where", "pt": "Onde", "category": "question" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-5-1",
+        "type": "translation",
+        "question": "Traduza: O que você gosta de ler?",
+        "correctAnswer": "What do you like to read"
+      },
+      {
+        "id": "ex-5-2",
+        "type": "translation",
+        "question": "Traduza: Nós escrevemos cartas",
+        "correctAnswer": "We write letters"
+      }
+    ]
+  },
+  {
+    "id": "lesson-06",
+    "moduleId": "basic-1",
+    "number": 6,
+    "title": "We Think & They Know",
+    "theory": [
+      "Verbs: To Think (Pensar/Achar) / To Know (Saber/Conhecer).",
+      "We know your family (Nós conhecemos sua família).",
+      "They think you are nice (Eles acham que você é legal).",
+      "Expression: I know how to play (Eu sei [como] jogar)."
+    ],
+    "vocabulary": [
+      { "en": "Know", "pt": "Saber/Conhecer", "category": "verbs" },
+      { "en": "Think", "pt": "Pensar", "category": "verbs" },
+      { "en": "About", "pt": "Sobre", "category": "preposition" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-6-1",
+        "type": "translation",
+        "question": "Traduza: Eu não sei jogar futebol",
+        "correctAnswer": "I don't know how to play soccer"
+      },
+      {
+        "id": "ex-6-2",
+        "type": "multiple_choice",
+        "question": "Como se diz 'O que você acha?'",
+        "correctAnswer": "What do you think?",
+        "options": ["What do you know?", "What do you think?", "Where do you think?"]
+      }
+    ]
+  },
+  {
+    "id": "lesson-07",
+    "moduleId": "basic-1",
+    "number": 7,
+    "title": "Talk, Sleep & Go",
+    "theory": [
+      "Verbs: To Talk (Conversar), To Sleep (Dormir), To Go (Ir).",
+      "I talk to my friends (Eu converso com meus amigos).",
+      "They sleep late (Eles dormem tarde).",
+      "You go to the park (Você vai ao parque)."
+    ],
+    "vocabulary": [
+      { "en": "Living Room", "pt": "Sala de estar", "category": "house" },
+      { "en": "Bedroom", "pt": "Quarto", "category": "house" },
+      { "en": "Kitchen", "pt": "Cozinha", "category": "house" },
+      { "en": "Park", "pt": "Parque", "category": "places" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-7-1",
+        "type": "translation",
+        "question": "Traduza: Eu quero ir para casa",
+        "correctAnswer": "I want to go home"
+      },
+      {
+        "id": "ex-7-2",
+        "type": "translation",
+        "question": "Traduza: Onde você gosta de dormir?",
+        "correctAnswer": "Where do you like to sleep"
+      }
+    ]
+  },
+  {
+    "id": "lesson-08",
+    "moduleId": "basic-1",
+    "number": 8,
+    "title": "He Needs & She Prefers (3rd Person)",
+    "theory": [
+      "3rd Person Rule: Add 'S' to the verb for He/She/It.",
+      "He needs (Ele precisa) / She prefers (Ela prefere).",
+      "It eats (Ele/Ela [animal] come).",
+      "Negative: He does not (doesn't) need."
+    ],
+    "vocabulary": [
+      { "en": "He", "pt": "Ele", "category": "pronoun" },
+      { "en": "She", "pt": "Ela", "category": "pronoun" },
+      { "en": "It", "pt": "Ele/Ela (coisas)", "category": "pronoun" },
+      { "en": "Prefer", "pt": "Preferir", "category": "verb" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-8-1",
+        "type": "translation",
+        "question": "Traduza: Ela prefere chocolate",
+        "correctAnswer": "She prefers chocolate"
+      },
+      {
+        "id": "ex-8-2",
+        "type": "multiple_choice",
+        "question": "Complete: He ___ to play soccer.",
+        "correctAnswer": "needs",
+        "options": ["need", "needs", "needing"]
+      }
+    ]
+  },
+  {
+    "id": "lesson-09",
+    "moduleId": "basic-1",
+    "number": 9,
+    "title": "He Buys & She Sells",
+    "theory": [
+      "Verbs: To Buy (Comprar) / To Sell (Vender).",
+      "He buys a car (Ele compra um carro).",
+      "She sells clothes (Ela vende roupas).",
+      "Vocabulary: Clothes (Coat, Shirt, Pants, Shoes)."
+    ],
+    "vocabulary": [
+      { "en": "Coat", "pt": "Casaco", "category": "clothes" },
+      { "en": "Shirt", "pt": "Camisa", "category": "clothes" },
+      { "en": "Shoes", "pt": "Sapatos", "category": "clothes" },
+      { "en": "Store", "pt": "Loja", "category": "places" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-9-1",
+        "type": "translation",
+        "question": "Traduza: Ele quer comprar um carro",
+        "correctAnswer": "He wants to buy a car"
+      },
+      {
+        "id": "ex-9-2",
+        "type": "translation",
+        "question": "Traduza: Ela vende sapatos",
+        "correctAnswer": "She sells shoes"
+      }
+    ]
+  },
+  {
+    "id": "lesson-10",
+    "moduleId": "basic-1",
+    "number": 10,
+    "title": "He Speaks & She Listens",
+    "theory": [
+      "Verbs: To Speak (Falar) / To Listen (Ouvir).",
+      "He speaks English (Ele fala inglês).",
+      "She listens to music (Ela ouve música).",
+      "Important: Listen TO something."
+    ],
+    "vocabulary": [
+      { "en": "English", "pt": "Inglês", "category": "language" },
+      { "en": "Spanish", "pt": "Espanhol", "category": "language" },
+      { "en": "Music", "pt": "Música", "category": "entertainment" },
+      { "en": "Because", "pt": "Porque (resposta)", "category": "conjunction" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-10-1",
+        "type": "translation",
+        "question": "Traduza: Ele fala espanhol",
+        "correctAnswer": "He speaks Spanish"
+      },
+      {
+        "id": "ex-10-2",
+        "type": "multiple_choice",
+        "question": "Complete: She ___ to rock music.",
+        "correctAnswer": "listens",
+        "options": ["listen", "listens", "listening"]
+      }
+    ]
+  },
+  {
+    "id": "lesson-11",
+    "moduleId": "basic-1",
+    "number": 11,
+    "title": "Open & Close",
+    "theory": [
+      "Verbs: To Open (Abrir) / To Close (Fechar).",
+      "The store opens at 8am.",
+      "I close the window.",
+      "Time expressions: Before (Antes), After (Depois), Now (Agora)."
+    ],
+    "vocabulary": [
+      { "en": "Open", "pt": "Abrir", "category": "verb" },
+      { "en": "Close", "pt": "Fechar", "category": "verb" },
+      { "en": "Church", "pt": "Igreja", "category": "places" },
+      { "en": "School", "pt": "Escola", "category": "places" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-11-1",
+        "type": "translation",
+        "question": "Traduza: A loja fecha às 10",
+        "correctAnswer": "The store closes at 10"
+      },
+      {
+        "id": "ex-11-2",
+        "type": "translation",
+        "question": "Traduza: Eu tenho que abrir a porta",
+        "correctAnswer": "I have to open the door"
+      }
+    ]
+  },
+  {
+    "id": "lesson-12",
+    "moduleId": "basic-1",
+    "number": 12,
+    "title": "Help & Try",
+    "theory": [
+      "Verbs: To Help (Ajudar) / To Try (Tentar/Experimentar).",
+      "Can I help you? (Posso te ajudar?)",
+      "You have to try this food. (Você tem que experimentar essa comida).",
+      "Object Pronouns: Me, You, Him, Her, Us, Them."
+    ],
+    "vocabulary": [
+      { "en": "Help", "pt": "Ajudar", "category": "verb" },
+      { "en": "Try", "pt": "Tentar", "category": "verb" },
+      { "en": "Us", "pt": "Nos/Conosco", "category": "pronoun" },
+      { "en": "Them", "pt": "Eles/Elas (objeto)", "category": "pronoun" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-12-1",
+        "type": "translation",
+        "question": "Traduza: Ela nos ajuda",
+        "correctAnswer": "She helps us"
+      },
+      {
+        "id": "ex-12-2",
+        "type": "translation",
+        "question": "Traduza: Eu quero ajudá-los",
+        "correctAnswer": "I want to help them"
+      }
+    ]
+  },
+  {
+    "id": "lesson-13",
+    "moduleId": "basic-1",
+    "number": 13,
+    "title": "Come & Visit",
+    "theory": [
+      "Verbs: To Come (Vir) / To Visit (Visitar).",
+      "They come here every day. (Eles vêm aqui todo dia).",
+      "I want to visit Paris. (Eu quero visitar Paris).",
+      "Countries: Brazil, USA, France, Italy."
+    ],
+    "vocabulary": [
+      { "en": "Come", "pt": "Vir", "category": "verb" },
+      { "en": "Visit", "pt": "Visitar", "category": "verb" },
+      { "en": "Here", "pt": "Aqui", "category": "place" },
+      { "en": "There", "pt": "Lá", "category": "place" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-13-1",
+        "type": "translation",
+        "question": "Traduza: Eles vêm para minha festa",
+        "correctAnswer": "They come to my party"
+      },
+      {
+        "id": "ex-13-2",
+        "type": "translation",
+        "question": "Traduza: Eu quero visitar o Brasil",
+        "correctAnswer": "I want to visit Brazil"
+      }
+    ]
+  },
+  {
+    "id": "lesson-14",
+    "moduleId": "basic-1",
+    "number": 14,
+    "title": "Watch & Understand",
+    "theory": [
+      "Verbs: To Watch (Assistir) / To Understand (Entender).",
+      "I watch TV every night. (Eu assisto TV toda noite).",
+      "Do you understand English? (Você entende inglês?).",
+      "School Subjects: Math, History, Geography."
+    ],
+    "vocabulary": [
+      { "en": "Watch", "pt": "Assistir", "category": "verb" },
+      { "en": "Understand", "pt": "Entender", "category": "verb" },
+      { "en": "Math", "pt": "Matemática", "category": "subject" },
+      { "en": "History", "pt": "História", "category": "subject" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-14-1",
+        "type": "translation",
+        "question": "Traduza: Eu não entendo matemática",
+        "correctAnswer": "I do not understand math"
+      },
+      {
+        "id": "ex-14-2",
+        "type": "translation",
+        "question": "Traduza: Ele assiste futebol",
+        "correctAnswer": "He watches soccer"
+      }
+    ]
+  },
+  {
+    "id": "lesson-15",
+    "moduleId": "basic-1",
+    "number": 15,
+    "title": "Cook & Live",
+    "theory": [
+      "Verbs: To Cook (Cozinhar) / To Live (Morar/Viver).",
+      "She cooks very well. (Ela cozinha muito bem).",
+      "I live in Brazil. (Eu moro no Brasil).",
+      "Quantifiers: How much (Quanto - preço) / How many (Quantos)."
+    ],
+    "vocabulary": [
+      { "en": "Cook", "pt": "Cozinhar", "category": "verb" },
+      { "en": "Live", "pt": "Morar", "category": "verb" },
+      { "en": "How much", "pt": "Quanto (preço/incontável)", "category": "question" },
+      { "en": "How many", "pt": "Quantos (contável)", "category": "question" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-15-1",
+        "type": "translation",
+        "question": "Traduza: Onde você mora?",
+        "correctAnswer": "Where do you live"
+      },
+      {
+        "id": "ex-15-2",
+        "type": "translation",
+        "question": "Traduza: Quanto custa?",
+        "correctAnswer": "How much is it"
+      }
+    ]
+  },
+  {
+    "id": "lesson-16",
+    "moduleId": "basic-1",
+    "number": 16,
+    "title": "Present Continuous (I am doing)",
+    "theory": [
+      "Verb To Be + Verb-ING.",
+      "I am working (Eu estou trabalhando).",
+      "You are studying (Você está estudando).",
+      "He is playing (Ele está jogando)."
+    ],
+    "vocabulary": [
+      { "en": "Working", "pt": "Trabalhando", "category": "gerund" },
+      { "en": "Studying", "pt": "Estudando", "category": "gerund" },
+      { "en": "Playing", "pt": "Jogando", "category": "gerund" },
+      { "en": "Doing", "pt": "Fazendo", "category": "gerund" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-16-1",
+        "type": "translation",
+        "question": "Traduza: Eu estou estudando",
+        "correctAnswer": "I am studying"
+      },
+      {
+        "id": "ex-16-2",
+        "type": "translation",
+        "question": "Traduza: Ela está indo",
+        "correctAnswer": "She is going"
+      }
+    ]
+  },
+  {
+    "id": "lesson-17",
+    "moduleId": "basic-1",
+    "number": 17,
+    "title": "Cooking & Traveling (Continuous)",
+    "theory": [
+      "Practice with Continuous Tense.",
+      "She is cooking dinner (Ela está cozinhando o jantar).",
+      "We are traveling (Nós estamos viajando).",
+      "Adjectives: Beautiful, Smart, Ugly, Boring."
+    ],
+    "vocabulary": [
+      { "en": "Traveling", "pt": "Viajando", "category": "gerund" },
+      { "en": "Cooking", "pt": "Cozinhando", "category": "gerund" },
+      { "en": "Beautiful", "pt": "Bonito(a)", "category": "adjective" },
+      { "en": "Smart", "pt": "Esperto(a)", "category": "adjective" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-17-1",
+        "type": "translation",
+        "question": "Traduza: Nós estamos viajando",
+        "correctAnswer": "We are traveling"
+      },
+      {
+        "id": "ex-17-2",
+        "type": "translation",
+        "question": "Traduza: Você é inteligente",
+        "correctAnswer": "You are smart"
+      }
+    ]
+  },
+  {
+    "id": "lesson-18",
+    "moduleId": "basic-1",
+    "number": 18,
+    "title": "Living & Working (Continuous)",
+    "theory": [
+      "More Continuous Practice.",
+      "They are living here (Eles estão morando aqui).",
+      "I am not working today (Eu não estou trabalhando hoje).",
+      "Prepositions: Near (perto), By (ao lado)."
+    ],
+    "vocabulary": [
+      { "en": "Living", "pt": "Morando", "category": "gerund" },
+      { "en": "Near", "pt": "Perto", "category": "preposition" },
+      { "en": "Anymore", "pt": "Não mais", "category": "adverb" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-18-1",
+        "type": "translation",
+        "question": "Traduza: Eles estão morando perto da escola",
+        "correctAnswer": "They are living near the school"
+      },
+      {
+        "id": "ex-18-2",
+        "type": "translation",
+        "question": "Traduza: Eu não estou trabalhando",
+        "correctAnswer": "I am not working"
+      }
+    ]
+  },
+  {
+    "id": "lesson-19",
+    "moduleId": "basic-1",
+    "number": 19,
+    "title": "Learning & Teaching",
+    "theory": [
+      "Verbs: To Learn (Aprender) / To Teach (Ensinar) - ING form.",
+      "I am learning English (Eu estou aprendendo inglês).",
+      "He is teaching me (Ele está me ensinando).",
+      "Words: From, Last, Because of."
+    ],
+    "vocabulary": [
+      { "en": "Learning", "pt": "Aprendendo", "category": "gerund" },
+      { "en": "Teaching", "pt": "Ensinando", "category": "gerund" },
+      { "en": "From", "pt": "De (origem)", "category": "preposition" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-19-1",
+        "type": "translation",
+        "question": "Traduza: Eu estou aprendendo inglês",
+        "correctAnswer": "I am learning English"
+      },
+      {
+        "id": "ex-19-2",
+        "type": "translation",
+        "question": "Traduza: Ela está ensinando",
+        "correctAnswer": "She is teaching"
+      }
+    ]
+  },
+  {
+    "id": "lesson-20",
+    "moduleId": "basic-1",
+    "number": 20,
+    "title": "Opening & Closing",
+    "theory": [
+      "Continuous of Open/Close.",
+      "They are opening a store (Eles estão abrindo uma loja).",
+      "We are closing now (Estamos fechando agora).",
+      "Expressions: I want to be like my father."
+    ],
+    "vocabulary": [
+      { "en": "Opening", "pt": "Abrindo", "category": "gerund" },
+      { "en": "Closing", "pt": "Fechando", "category": "gerund" },
+      { "en": "Like", "pt": "Como (comparação)", "category": "preposition" }
+    ],
+    "exercises": [
+      {
+        "id": "ex-20-1",
+        "type": "translation",
+        "question": "Traduza: Eles estão abrindo a porta",
+        "correctAnswer": "They are opening the door"
+      },
+      {
+        "id": "ex-20-2",
+        "type": "translation",
+        "question": "Traduza: Eu quero ser como você",
+        "correctAnswer": "I want to be like you"
+      }
+    ]
+  }
+]

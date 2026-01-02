@@ -1,227 +1,119 @@
-import { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { lessonOne } from './data/seed';
-import { CheckCircle2, XCircle, BookOpen, Trophy, History } from 'lucide-react';
-
-// Importando o Firebase e funções do Firestore
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import type { ReactNode } from 'react';
+import { useEffect, useState } from 'react';
+import { doc, getDoc } from 'firebase/firestore';
 import { db } from './lib/firebase';
-import { collection, addDoc, query, orderBy, onSnapshot, Timestamp } from 'firebase/firestore';
 
-// Tipagem para o histórico que vem do banco
-interface ProgressItem {
-  id: string;
-  lessonTitle: string;
-  completedAt: Timestamp;
-  user: string;
+import { Home } from './pages/Home';
+import { LessonPage } from './pages/LessonPage';
+import { AdminPage } from './pages/AdminPage';
+import { LoginPage } from './pages/LoginPage';
+import { TeacherPage } from './pages/TeacherPage';
+import { SuperAdminPage } from './pages/SuperAdminPage'; // Nova página
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+
+// --- CONFIGURAÇÃO DE SEGURANÇA ---
+// COLOQUE AQUI O SEU EMAIL REAL DO GOOGLE
+const SUPER_ADMIN_EMAILS = ["claudesonborges@gmail.com", "itachi189@gmail.com"]; 
+
+// --- Componentes de Proteção de Rota ---
+
+// 1. Proteção Básica: Só logado
+function PrivateRoute({ children }: { children: ReactNode }) {
+  const { user, loading } = useAuth();
+  if (loading) return <div className="h-screen flex items-center justify-center bg-slate-100">Carregando...</div>;
+  if (!user) return <Navigate to="/login" />;
+  return <>{children}</>;
 }
 
-const answerSchema = z.object({
-  answer: z.string().min(1, "Sua resposta não pode estar vazia"),
-});
+// 2. Proteção de Professor: Só se tiver o cargo 'teacher' no banco (ou for admin)
+function TeacherRoute({ children }: { children: ReactNode }) {
+  const { user, loading } = useAuth();
+  const [isAllowed, setIsAllowed] = useState<boolean | null>(null);
 
-type AnswerForm = z.infer<typeof answerSchema>;
+  useEffect(() => {
+    async function checkRole() {
+      if (!user) return;
+      if (SUPER_ADMIN_EMAILS.includes(user.email || "")) {
+        setIsAllowed(true); // Super Admin entra em tudo
+        return;
+      }
+
+      // Verifica no banco se é professor
+      const snap = await getDoc(doc(db, "users", user.uid));
+      const role = snap.data()?.role;
+      setIsAllowed(role === 'teacher');
+    }
+    if (user) checkRole();
+  }, [user]);
+
+  if (loading || isAllowed === null) return <div className="h-screen flex items-center justify-center bg-slate-100">Verificando permissões...</div>;
+  
+  if (!isAllowed) {
+    alert("Acesso negado: Área restrita a Professores.");
+    return <Navigate to="/" />;
+  }
+
+  return <>{children}</>;
+}
+
+// 3. Proteção Super Admin: Só o email Mestre
+function SuperAdminRoute({ children }: { children: ReactNode }) {
+  const { user, loading } = useAuth();
+
+  if (loading) return <div className="h-screen flex items-center justify-center bg-slate-900 text-white">Verificando credenciais...</div>;
+  
+  if (!user || !SUPER_ADMIN_EMAILS.includes(user.email || "")) {
+    return <Navigate to="/" />;
+  }
+
+  return <>{children}</>;
+}
 
 function App() {
-  const [currentExIndex, setCurrentExIndex] = useState(0);
-  const [feedback, setFeedback] = useState<'success' | 'error' | null>(null);
-  const [isSaving, setIsSaving] = useState(false);
-  
-  // Estado para armazenar o histórico vindo do Firebase
-  const [history, setHistory] = useState<ProgressItem[]>([]);
-  
-  const currentExercise = lessonOne.exercises[currentExIndex];
-
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<AnswerForm>({
-    resolver: zodResolver(answerSchema),
-  });
-
-  // Efeito para carregar o histórico em tempo real
-  useEffect(() => {
-    // Cria uma query para buscar a coleção 'progress' ordenada por data (mais recente primeiro)
-    const q = query(collection(db, "progress"), orderBy("completedAt", "desc"));
-
-    // O onSnapshot fica "ouvindo" o banco. Se algo mudar lá, atualiza aqui na hora.
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const loadedHistory = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      })) as ProgressItem[];
-      
-      setHistory(loadedHistory);
-    });
-
-    // Limpa a conexão quando o componente desmontar
-    return () => unsubscribe();
-  }, []);
-
-  const onSubmit = (data: AnswerForm) => {
-    // Validação estrita (conforme sua preferência atual)
-    const normalizedUserAnswer = data.answer.trim().toLowerCase();
-    const normalizedCorrect = currentExercise.correctAnswer.toLowerCase();
-
-    if (normalizedUserAnswer === normalizedCorrect) {
-      setFeedback('success');
-    } else {
-      setFeedback('error');
-    }
-  };
-
-  const saveProgress = async () => {
-    try {
-      setIsSaving(true);
-      // Salva na coleção 'progress'
-      await addDoc(collection(db, "progress"), {
-        lessonId: lessonOne.id,
-        lessonTitle: lessonOne.title,
-        completedAt: new Date(),
-        user: "Carioca" 
-      });
-      // Não precisamos de alert aqui se mostrarmos na lista, mas deixei para confirmação visual
-      alert("Sucesso! Lição concluída e salva na nuvem! 🚀");
-    } catch (error) {
-      console.error("Erro ao salvar:", error);
-      alert("Erro ao salvar o progresso. Verifique o console.");
-    } finally {
-      setIsSaving(false);
-    }
-  };
-
-  const nextExercise = () => {
-    setFeedback(null);
-    reset();
-    
-    if (currentExIndex < lessonOne.exercises.length - 1) {
-      setCurrentExIndex(prev => prev + 1);
-    } else {
-      saveProgress();
-    }
-  };
-
-  // Função auxiliar para formatar a data do Firestore
-  const formatDate = (timestamp: Timestamp) => {
-    if (!timestamp) return "";
-    return new Date(timestamp.seconds * 1000).toLocaleDateString("pt-BR", {
-      day: '2-digit',
-      month: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-  };
-
   return (
-    <div className="min-h-screen bg-slate-100 flex flex-col items-center justify-center p-4 font-sans gap-8">
-      
-      {/* CARD PRINCIPAL DO QUIZ */}
-      <div className="max-w-md w-full bg-white rounded-xl shadow-xl overflow-hidden">
-        
-        {/* Header da Aula */}
-        <div className="bg-blue-600 p-6 text-white">
-          <div className="flex items-center gap-2 mb-2">
-            <BookOpen size={20} />
-            <span className="text-sm font-semibold uppercase tracking-wider">Lesson {lessonOne.number}</span>
-          </div>
-          <h1 className="text-2xl font-bold">{lessonOne.title}</h1>
-          <div className="mt-4 bg-blue-700/50 p-3 rounded text-sm">
-             <p>{lessonOne.theory[0]}</p>
-             <p className="font-mono mt-1 text-yellow-300">Ex: {lessonOne.theory[1]}</p>
-          </div>
-        </div>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
 
-        {/* Área de Prática */}
-        <div className="p-6">
-          <div className="mb-4">
-            <span className="text-xs font-bold text-gray-400">EXERCISE {currentExIndex + 1} OF {lessonOne.exercises.length}</span>
-            <h2 className="text-xl font-semibold text-slate-800 mt-1">{currentExercise.question}</h2>
-          </div>
+          {/* Rotas de Aluno (Básicas) */}
+          <Route path="/" element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          } />
+          
+          <Route path="/lesson/:id" element={
+            <PrivateRoute>
+              <LessonPage />
+            </PrivateRoute>
+          } />
+          
+          {/* Rota de Admin de Conteúdo (Você decide se mantém aberta ou fecha) */}
+          <Route path="/admin" element={
+            <SuperAdminRoute>
+              <AdminPage />
+            </SuperAdminRoute>
+          } />
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <div>
-              <input 
-                {...register("answer")}
-                type="text" 
-                autoComplete="off"
-                placeholder="Type in English..."
-                className="w-full p-4 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:ring-0 outline-none transition text-lg text-black"
-                disabled={feedback === 'success' || isSaving}
-              />
-              {errors.answer && <p className="text-red-500 text-sm mt-1">{errors.answer.message}</p>}
-            </div>
+          {/* Rota do Professor (Agora protegida por cargo) */}
+          <Route path="/teacher" element={
+            <TeacherRoute>
+              <TeacherPage />
+            </TeacherRoute>
+          } />
 
-            {feedback === 'success' && (
-              <div className="flex items-center gap-2 text-green-600 bg-green-50 p-3 rounded-lg border border-green-200">
-                <CheckCircle2 /> <span className="font-bold">Correct! Well done.</span>
-              </div>
-            )}
+          {/* Rota do DONO (Você) */}
+          <Route path="/super-admin" element={
+            <SuperAdminRoute>
+              <SuperAdminPage />
+            </SuperAdminRoute>
+          } />
 
-            {feedback === 'error' && (
-              <div className="flex items-center gap-2 text-red-600 bg-red-50 p-3 rounded-lg border border-red-200">
-                <XCircle /> <span className="font-bold">Incorrect. Try again!</span>
-              </div>
-            )}
-
-            <div className="pt-2">
-              {feedback === 'success' ? (
-                <button 
-                  onClick={nextExercise}
-                  type="button"
-                  disabled={isSaving}
-                  className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg transition flex justify-center items-center gap-2"
-                >
-                  {isSaving ? (
-                    <span>Saving...</span>
-                  ) : (
-                    <>
-                      {currentExIndex < lessonOne.exercises.length - 1 ? 'Next Question' : 'Finish Lesson'}
-                    </>
-                  )}
-                </button>
-              ) : (
-                <button 
-                  type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition shadow-lg shadow-blue-600/30"
-                >
-                  Check Answer
-                </button>
-              )}
-            </div>
-          </form>
-        </div>
-      </div>
-
-      {/* NOVO: ÁREA DE HISTÓRICO (DASHBOARD) */}
-      <div className="max-w-md w-full">
-        <div className="flex items-center gap-2 mb-4 text-slate-700">
-          <History size={20} />
-          <h3 className="font-bold text-lg">Activity History</h3>
-        </div>
-
-        <div className="space-y-3">
-          {history.length === 0 ? (
-            <p className="text-slate-400 text-center italic">No lessons completed yet.</p>
-          ) : (
-            history.map((item) => (
-              <div key={item.id} className="bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex justify-between items-center">
-                <div className="flex items-center gap-3">
-                  <div className="bg-yellow-100 p-2 rounded-full text-yellow-600">
-                    <Trophy size={18} />
-                  </div>
-                  <div>
-                    <p className="font-bold text-slate-800">{item.lessonTitle}</p>
-                    <p className="text-xs text-slate-500">Completed by {item.user}</p>
-                  </div>
-                </div>
-                <span className="text-xs font-mono text-slate-400">
-                  {formatDate(item.completedAt)}
-                </span>
-              </div>
-            ))
-          )}
-        </div>
-      </div>
-
-    </div>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
